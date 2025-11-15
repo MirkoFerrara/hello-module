@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write    # ← AGGIUNTO: Permesso per creare release
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -36,5 +39,11 @@ jobs:
             dist/module.umd.js.map
             dist/backend.jar
             dist/module.manifest.json
+          body: |
+            ## Hello Module ${{ github.ref_name }}
+            
+            ### jsDelivr URLs:
+            - Frontend: `https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/dist/module.umd.js`
+            - Manifest: `https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/dist/module.manifest.json`
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
