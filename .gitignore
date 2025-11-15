@@ -1,5 +1,4 @@
 # === Build Outputs ===
-dist/
 target/
 *.jar
 *.war
