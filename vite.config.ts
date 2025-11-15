@@ -10,7 +10,6 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
-      // ✅ RIPRISTINA external - usa Angular dell'app!
       external: [
         '@angular/core',
         '@angular/common',
@@ -25,7 +24,7 @@ export default defineConfig({
       }
     },
     target: 'es2022',
-    minify: true,
+    minify: false,
     sourcemap: true
   }
 });
