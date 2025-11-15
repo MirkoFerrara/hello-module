@@ -7,7 +7,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'frontend/src/public-api.ts'),
       name: 'HelloModule',
       fileName: 'plugin',
-      formats: ['es']
+      formats: ['es']  // ✅ Questo c'è già, ma aggiungiamo estensione
     },
     rollupOptions: {
       external: [
@@ -16,6 +16,7 @@ export default defineConfig({
         '@angular/platform-browser'
       ],
       output: {
+        entryFileNames: 'plugin.mjs',  // ✅ AGGIUNTO: forza .mjs
         globals: {
           '@angular/core': 'ng.core',
           '@angular/common': 'ng.common'

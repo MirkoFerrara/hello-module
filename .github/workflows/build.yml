@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write  # ✅ AGGIUNTO: Permessi per creare release
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,6 +25,9 @@ jobs:
       
       - name: Build frontend module
         run: npm run build
+      
+      - name: List dist files
+        run: ls -la dist/  # ✅ AGGIUNTO: Debug
       
       - name: Create Release
         uses: softprops/action-gh-release@v1
