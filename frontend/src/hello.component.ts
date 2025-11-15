@@ -3,7 +3,32 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-hello-module',
-  templateUrl: './hello.component.html',
+  template: `
+    <div class="module-container">
+      <h1>👋 Hello Module</h1>
+      
+      <div class="message">
+        {{ message }}
+      </div>
+      
+      <p>Questo è un modulo di esempio che dimostra:</p>
+      <ul style="list-style: none; padding: 0; margin: 20px 0;">
+        <li>✅ Caricamento dinamico del frontend</li>
+        <li>✅ Comunicazione con backend del modulo</li>
+        <li>✅ Stili isolati del componente</li>
+        <li>✅ Integrazione con l'app principale</li>
+      </ul>
+      
+      <button (click)="loadFromBackend()" [disabled]="loading">
+        {{ loading ? 'Caricamento...' : '📡 Carica dal Backend' }}
+      </button>
+      
+      <div class="backend-response" *ngIf="backendResponse">
+        <strong>Risposta dal backend:</strong><br>
+        {{ backendResponse }}
+      </div>
+    </div>
+  `,
   styles: [`
     .module-container {
       padding: 40px;
