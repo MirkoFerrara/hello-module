@@ -10,15 +10,24 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
-      external: [
-        '@angular/core',
-        '@angular/common'
-      ],
+      // ✅ VUOTO - niente external, niente globals
       output: {
-        entryFileNames: 'plugin.mjs'
+        entryFileNames: 'plugin.mjs',
+        inlineDynamicImports: true,  // ✅ AGGIUNTO
       }
     },
     target: 'es2022',
-    sourcemap: true
+    minify: false,  // ✅ DISABILITATO per vedere meglio
+    sourcemap: true,
+    commonjsOptions: {
+      include: [/node_modules/],  // ✅ Include node_modules
+    }
+  },
+  optimizeDeps: {
+    include: ['@angular/core', '@angular/common']  // ✅ Force include
+  },
+  esbuild: {
+    target: 'es2022',
+    keepNames: true
   }
 });
