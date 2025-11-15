@@ -1,2 +1,1 @@
-export { HelloModule } from './hello.module';
-export { HelloModuleComponent } from './hello.component';
+export { default } from './hello.component';

@@ -1,0 +1,20 @@
+{
+  "name": "hello-module",
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
+  },
+  "devDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@types/node": "^24.10.1",
+    "typescript": "~5.6.0",
+    "vite": "^5.4.0"
+  }
+}

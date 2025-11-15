@@ -1,121 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-hello-module',
+  selector: 'hello-module',
+  standalone: true,
+  imports: [CommonModule],
   template: `
-    <div class="module-container">
-      <h1>👋 Hello Module</h1>
-      
-      <div class="message">
-        {{ message }}
-      </div>
-      
-      <p>Questo è un modulo di esempio che dimostra:</p>
-      <ul style="list-style: none; padding: 0; margin: 20px 0;">
-        <li>✅ Caricamento dinamico del frontend</li>
-        <li>✅ Comunicazione con backend del modulo</li>
-        <li>✅ Stili isolati del componente</li>
-        <li>✅ Integrazione con l'app principale</li>
-      </ul>
-      
-      <button (click)="loadFromBackend()" [disabled]="loading">
-        {{ loading ? 'Caricamento...' : '📡 Carica dal Backend' }}
+    <div class="hello-module-container">
+      <h1>🎉 Hello from Hello Module!</h1>
+      <p>This is a <strong>standalone component</strong> loaded dynamically at runtime!</p>
+      <p>Module version: <code>2.0.0</code></p>
+      <button (click)="counter = counter + 1">
+        Clicked {{ counter }} times
       </button>
-      
-      <div class="backend-response" *ngIf="backendResponse">
-        <strong>Risposta dal backend:</strong><br>
-        {{ backendResponse }}
-      </div>
     </div>
   `,
   styles: [`
-    .module-container {
-      padding: 40px;
-      text-align: center;
+    .hello-module-container {
+      padding: 2rem;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border-radius: 12px;
       color: white;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      min-height: 400px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     }
     
-    h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-      animation: fadeIn 1s ease-in;
+    .hello-module-container h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
     }
     
-    .message {
-      font-size: 1.5em;
-      margin: 20px 0;
-      padding: 20px;
+    .hello-module-container p {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    
+    .hello-module-container code {
       background: rgba(255,255,255,0.2);
-      border-radius: 8px;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
     }
     
-    .backend-response {
-      margin-top: 30px;
-      padding: 20px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      font-style: italic;
-    }
-    
-    button {
-      margin-top: 20px;
-      padding: 12px 30px;
-      font-size: 1.1em;
+    .hello-module-container button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
       background: white;
       color: #667eea;
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      transition: transform 0.2s;
-      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     
-    button:hover {
-      transform: scale(1.05);
-    }
-    
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .hello-module-container button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
   `]
 })
-export class HelloModuleComponent implements OnInit {
-  
-  message: string = 'Benvenuto nel modulo Hello! 🎉';
-  backendResponse: string = '';
-  loading: boolean = false;
-  
-  constructor(private http: HttpClient) {}
-  
-  ngOnInit() {
-    console.log('✅ Hello Module caricato con successo!');
-  }
-  
-  loadFromBackend() {
-    this.loading = true;
-    
-    this.http.get<{message: string}>('/api/modules/hello-module/message')
-      .subscribe({
-        next: (response) => {
-          this.backendResponse = response.message;
-          this.loading = false;
-        },
-        error: (error) => {
-          this.backendResponse = '❌ Errore nel caricamento dal backend';
-          this.loading = false;
-          console.error('Errore:', error);
-        }
-      });
-  }
+export default class HelloComponent {
+  counter = 0;
 }
