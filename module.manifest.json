@@ -1,0 +1,36 @@
+{
+  "id": "hello-module",
+  "name": "Hello Module",
+  "version": "1.0.0",
+  "description": "Modulo di esempio per testare il sistema di moduli dinamici",
+  "author": "Mirko",
+  "frontend": {
+    "entryPoint": "module.umd.js",
+    "route": "/modules/hello"
+  },
+  "backend": {
+    "type": "jar",
+    "jarFile": "backend.jar",
+    "mainClass": "com.myapp.modules.hello.HelloModuleConfiguration",
+    "endpoints": [
+      {
+        "path": "/api/modules/hello-module/message",
+        "method": "GET"
+      },
+      {
+        "path": "/api/modules/hello-module/info",
+        "method": "GET"
+      }
+    ]
+  },
+  "maven": {
+    "groupId": "com.my.modules",
+    "artifactId": "hello-module",
+    "version": "1.0.0",
+    "repository": "https://maven.pkg.github.com/TUOUSERNAME/hello-module"
+  },
+  "dependencies": {
+    "@angular/core": "^17.3.0",
+    "spring-boot-starter-webflux": "3.5.5"
+  }
+}

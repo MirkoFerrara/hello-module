@@ -1,0 +1,57 @@
+# === Build Outputs ===
+dist/
+target/
+*.jar
+*.war
+*.class
+
+# === Node ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# === Angular ===
+.angular/
+.sass-cache/
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# === OS ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# === Logs ===
+*.log
+logs/
+
+# === Test ===
+coverage/
+.nyc_output/
+
+# === Temporary ===
+*.tmp
+*.temp
+.cache/
+
+# === Maven ===
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
