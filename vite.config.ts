@@ -10,12 +10,17 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
+      // ✅ NESSUN external! Includi tutto!
       output: {
         entryFileNames: 'plugin.mjs',
       }
     },
     target: 'es2022',
-    minify: true,  // ✅ Minify per ridurre dimensioni
+    minify: true,
     sourcemap: true
+  },
+  esbuild: {
+    target: 'es2022',
+    keepNames: true
   }
 });
